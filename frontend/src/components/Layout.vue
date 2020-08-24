@@ -6,7 +6,7 @@
       color="white"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title><div @click="home">First</div></v-toolbar-title>
+      <v-toolbar-title><div @click="home">First Project</div></v-toolbar-title>
       <v-spacer></v-spacer>
       <slot name="menubar"></slot>
     </v-app-bar>
@@ -29,11 +29,7 @@ export default {
   }),
   methods: {
     home () {
-      // location.path가 router이면 /로 보내고,
       (window.location.pathname !== '/') ? router.push('/') : router.go(0)
-    },
-    category () {
-      (window.location.pathname !== '/CrawlCategory') ? router.push('/CrawlCategory') : router.go(0)
     },
     suggest () {
       (window.location.pathname !== '/suggestednews/list') ? router.push('/suggestednews/list') : router.go(0)

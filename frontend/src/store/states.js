@@ -1,4 +1,8 @@
 export default {
+  // Login & SignUp
   accessToken: '',
-  myinfo: null
+  myinfo: null,
+  // board 생성
+  boards: [],
+  board: null
 }

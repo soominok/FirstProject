@@ -10,7 +10,7 @@
           </div>
           <v-btn @click="start('keyword')" text color="black"
             style="padding: 10px; width: 90px;">증권키워드</v-btn>
-          <v-btn @click="start('board')" text color="black"
+          <v-btn @click="$router.push('BoardListPage')" text color="black"
             style="padding: 10px; width: 500px;">게시판</v-btn>
           <v-btn @click="$router.push('MyInfoPage')" text color="black"
             style="padding: 5px; width: 60px;">MyPage</v-btn>
@@ -21,7 +21,7 @@
         <div id="header" v-else>
           <v-btn @click="start('keyword')" text color="black"
             style="padding: 10px; width: 90px;">증권키워드</v-btn>
-          <v-btn @click="start('board')" text color="black"
+          <v-btn @click="$router.push('BoardListPage')" text color="black"
             style="padding: 10px; width: 90px;">게시판</v-btn>
           <v-btn @click="$router.push('LoginPage')" text color="black"
             style="padding: 10px; width: 90px;">Login</v-btn>
@@ -41,6 +41,7 @@ import store from '../store'
 import Vue from 'vue'
 import cookies from 'vue-cookies'
 import Layout from '../components/Layout'
+import BoardListPage from '../views/BoardListPage.vue'
 
 import { mapState, mapGetters, mapActions } from 'vuex'
 
