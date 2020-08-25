@@ -18,11 +18,7 @@ export default {
     onSubmit (payload) {
       console.log('BoardRegisterPage onSubmit()')
       const { title, writer, content } = payload
-      // 이 정보는 챙겨야하니까 post로 보내기
-      // requestMapping이 boards에 걸려있으니까 port번호 7777 다음에 써줌.
-      // VueBoardController를 보면 @RequestMapping("/boards")라고 써져있는 부분을 가져오는 것.
-      // { } 여기 순서 주의하기!! - BoardRegisterForm.vue에 써준 순서와 같아야 함.
-      axios.post('http://localhost:7777/boards', { title, writer, content })
+      axios.post('http://localhost:5555/boards', { title, writer, content })
         .then(res => {
           console.log(res)
           // 성공했다는 알림 띄움.

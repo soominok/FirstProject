@@ -9,11 +9,7 @@
       Edit
     </router-link>
     <button @click="onDelete">Delete</button>
-    <!-- List 쪽으로 되돌아가기
     <router-link :to="{ name: 'BoardListPage' }">
-      List
-    </router-link> -->
-    <router-link :to="{ name: 'VuetifyBoardListPage' }">
       List
     </router-link>
   </div>
@@ -38,23 +34,21 @@ export default {
     ])
   },
   created () {
-    // 잘 동작하는지 디버깅 하는 것.
     console.log('BoadReadPage created(): ' + this.boardNo)
-    // 가져온 board가 boardNo이라면 ???
     this.fetchBoard(this.boardNo)
       .catch(err => {
         alert(err.response.data.message)
         this.$router.push()
       })
   },
-  // 받아와야하니까 method 작성
+
   methods: {
     ...mapActions([
       'fetchBoard'
     ]),
     onDelete () {
       const { boardNo } = this.board
-      axios.delete(`http://localhost:7777/boards/${boardNo}`)
+      axios.delete(`http://localhost:5555/boards/${boardNo}`)
         // 처리정보를 res로 받아오기
         .then(res => {
           alert('Delete Success')

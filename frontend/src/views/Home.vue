@@ -10,23 +10,22 @@
           </div>
           <v-btn @click="start('keyword')" text color="black"
             style="padding: 10px; width: 90px;">증권키워드</v-btn>
-          <v-btn @click="$router.push('BoardListPage')" text color="black"
-            style="padding: 10px; width: 500px;">게시판</v-btn>
+          <v-btn @click="$router.push({ name: 'BoardListPage' })" text color="black"
+            style="padding: 10px; width: 300px;">게시판</v-btn>
           <v-btn @click="$router.push('MyInfoPage')" text color="black"
             style="padding: 5px; width: 60px;">MyPage</v-btn>
           <v-btn @click="onClickLogout" text color="black"
             style="padding: 5px; width: 90px;">Logout</v-btn>
-
         </div>
         <div id="header" v-else>
           <v-btn @click="start('keyword')" text color="black"
             style="padding: 10px; width: 90px;">증권키워드</v-btn>
-          <v-btn @click="$router.push('BoardListPage')" text color="black"
-            style="padding: 10px; width: 90px;">게시판</v-btn>
+          <v-btn @click="$router.push({ name: 'BoardListPage' })" text color="black"
+            style="padding: 10px; width: 300px;">게시판</v-btn>
           <v-btn @click="$router.push('LoginPage')" text color="black"
-            style="padding: 10px; width: 90px;">Login</v-btn>
-          <v-btn @click="$router.push('AdminSetupPage')" text color="black"
-            style="padding: 10px; width: 90px;">Register</v-btn>
+            style="padding: 5px; width: 90px;">Login</v-btn>
+          <v-btn @click="$router.push({ name: 'MemberRegisterPage' })" text color="black"
+            style="padding: 5px; width: 90px;">Register</v-btn>
         </div>
       </div>
     </template>
@@ -59,6 +58,13 @@ export default {
       alert('Success Logout')
       this.$router.push({ name: 'Home' })
     },
+    // onClickRegister (state) {
+    //   if (myinfo.auth === 'ROLE_ADMIN') {
+    //     this.$router.push({ name: 'AdminSetupPage' })
+    //   } else {
+    //     this.$router.push({ name: 'MemberRegisterPage' })
+    //   }
+    // },
     ...mapActions(['logout'])
   },
   computed: {

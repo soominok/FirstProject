@@ -35,3 +35,6 @@ public class MemberAuthRepository {
         return results.isEmpty() ? null : results.get(0);
     }
 }
+
+/*select count(*) as count from member_auth where auth = 'ROLE_ADMIN';
+*/

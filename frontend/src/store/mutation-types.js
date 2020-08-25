@@ -7,3 +7,5 @@ export const DESTROY_MY_INFO = 'DESTROY_MY_INFO'
 // Board 생성
 export const FETCH_BOARD_LIST = 'FETCH_BOARD_LIST'
 export const FETCH_BOARD = 'FETCH_BOARD'
+export const BOARDSTART = 'BOARDSTART'
+export const FINDONE = 'FINDONE'

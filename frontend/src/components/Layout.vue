@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <v-app-bar
-      app
-      clipped-right
-      color="white"
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title><div @click="home">First Project</div></v-toolbar-title>
-      <v-spacer></v-spacer>
-      <slot name="menubar"></slot>
-    </v-app-bar>
+  <div id="app">
+    <v-card class="overflow-hidden">
+      <v-app-bar
+        absolute
+        clipped-right
+        color="white"
+        shrink-on-scroll
+        prominent
+        scroll-target="#scrolling-techniques"
+      >
+        <v-toolbar-title class="text-uppercase"><div @click="home">First Project</div></v-toolbar-title>
+        <v-spacer></v-spacer>
+        <slot name="menubar"></slot>
+      </v-app-bar>
+    </v-card>
   </div>
 </template>
 

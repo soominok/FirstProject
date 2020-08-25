@@ -1,6 +1,7 @@
 <template>
   <div>
     <h3>Board List View</h3>
+    <!-- 게시판 표현해주기 -->
     <table border="1">
       <tr>
         <th align="center" width="80">No</th>
@@ -10,7 +11,7 @@
       </tr>
       <tr v-for="page in paginatedData" :key="page.boardNo">
         <td>{{ page.boardNo }}</td>
-        <td>{{ page.title }}</td>
+        <td><a @click="$router.push({ name: 'BoardReadPage' })">{{ page.title }}</a></td>
         <td>{{ page.writer }}</td>
         <td>{{ page.regData }}</td>
       </tr>
@@ -20,7 +21,6 @@
         @click="prevPage" class="page-btn">
         이전
       </button>
-      // computed 계산식에 의해서 진행 됨!
       <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
       <button :disabled="pageNum >= pageCount - 1"
         @click="nextPage" class="page-btn">
@@ -63,6 +63,7 @@ export default {
       const listSize = this.pageSize
 
       let page = Math.floor(listLen / listSize)
+      // 남는 데이터가 있으면 +1을 해주고, 딱 떨어지면 그냥 page로!
       if (listLen % listSize > 0) {
         page += 1
       }

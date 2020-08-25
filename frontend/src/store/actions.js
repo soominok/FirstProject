@@ -42,7 +42,7 @@ export default {
     commit(DESTROY_ACCESS_TOKEN)
   },
   fetchBoardList ({ commit }) {
-    return axios.get('http://localhost:7777/boards')
+    return axios.get('http://localhost:5555/boards')
       .then(res => {
         commit(FETCH_BOARD_LIST, res.data)
       })
@@ -55,4 +55,21 @@ export default {
         commit(FETCH_BOARD, res.data)
       })
   }
+//   async boardFind ({ commit }, category) {
+//    axios.get('http://localhost:5555/' + `${category}`)
+//      .then(({ data }) => {
+//        commit('BOARDSTART', data)
+//        if (window.location.pathname !== '/board') {
+//          router.push('/board')
+//        }
+//      })
+//  },
+//  async boardFindOne ({ commit }, boardNo) {
+//    axios.get('http://localhost:5555/boards' + `${boardNo}`)
+//      .then(({ data }) => {
+//        console.log('/boards/boardNo res: ' + data)
+//        commit('FINDONE', data)
+//        router.push('/boards/{boardNo}')
+//      })
+//  }
 }

@@ -4,5 +4,6 @@ export default {
   myinfo: null,
   // board 생성
   boards: [],
-  board: null
+  board: null,
+  lists: []
 }

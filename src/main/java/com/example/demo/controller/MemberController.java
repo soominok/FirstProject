@@ -37,10 +37,15 @@ public class MemberController {
     @Autowired
     private MessageSource messageSource;
 
-    @PostMapping("")
+
+    @RequestMapping(value  = "/register",
+            method = RequestMethod.POST,
+            produces = "text/plain;charset=UTF-8")
+
     private ResponseEntity<Member> register(@Validated @RequestBody Member member) throws Exception {
 
-        log.info("member.getUserName(): " + member.getUserName());
+        log.info("MemberRegister: member.getUserName(): " + member.getUserName());
+        log.info("MemberRegister: service.countAll(): " + service.countAll());
 
         String inputPassword = member.getUserPw();
         member.setUserPw(passwordEncoder.encode(inputPassword));
@@ -101,22 +106,22 @@ public class MemberController {
         log.info("setupAdmin: member.getUserName(): " + member.getUserName());
         log.info("setupAdmin: service.countAll(): " + service.countAll());
 
+        String inputPassword = member.getUserPw();
+        member.setUserPw(passwordEncoder.encode(inputPassword));
 
         if (service.countAll() == 0) {
-            String inputPassword = member.getUserPw();
-
-            member.setUserPw(passwordEncoder.encode(inputPassword));
-
             member.setJob("Admin");
 
             service.setupAdmin(member);
-
             return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 
-        }
+        } else {
+            member.setJob("Member");
+            service.register(member);
 
-        String message = messageSource.getMessage("common.cannotSetupAdmin", null, Locale.KOREAN);
-        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
+         String message = messageSource.getMessage("common.cannotSetupAdmin", null, Locale.KOREAN);
+         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
     // 내정보 확인하기
     @GetMapping("/myinfo")

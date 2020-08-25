@@ -5,6 +5,7 @@ import About from '../views/About.vue'
 
 import LoginPage from '../views/LoginPage.vue'
 import AdminSetupPage from '../views/AdminSetupPage.vue'
+import MemberRegisterPage from '../views/MemberRegisterPage.vue'
 import MyInfoPage from '../views/MyInfoPage.vue'
 
 import BoardListPage from '../views/BoardListPage.vue'
@@ -30,21 +31,28 @@ const routes = [
     // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/LoginPage',
+    path: '/loginPage',
     name: 'LoginPage',
     components: {
       default: LoginPage
     }
   },
   {
-    path: '/AdminSetupPage',
+    path: '/adminSetupPage',
     name: 'AdminSetupPage',
     components: {
       default: AdminSetupPage
     }
   },
   {
-    path: '/MyInfoPage',
+    path: '/memberRegisterPage',
+    name: 'MemberRegisterPage',
+    components: {
+      default: MemberRegisterPage
+    }
+  },
+  {
+    path: '/myInfoPage',
     name: 'MyInfoPage',
     components: {
       default: MyInfoPage
