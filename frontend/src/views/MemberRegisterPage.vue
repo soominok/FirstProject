@@ -1,6 +1,8 @@
 <template>
   <div align="center">
+    <br>
     <h1>Member Register Page</h1>
+    <br><br>
     <member-register-form @submit="onSubmit"/>
   </div>
 </template>

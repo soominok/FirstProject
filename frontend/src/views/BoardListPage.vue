@@ -1,29 +1,71 @@
 <template>
-  <div align="center">
-    <h2>Vuetify Real Board List</h2>
-    <!-- Vue와 React의 장점은 재활용이 가능함!
-         이미 컴포넌트 만들어놓은거 쓸 수 있음!!
-         BoardListPage.vue꺼를!! 그럼, 이제 pageArray만 만들어주면 됨! -->
-    <router-link :to="{ name: 'BoardRegisterPage' }">
-      Create New Board
-    </router-link>
-    <!-- list-array는 vuetify-board-list-page-form에 전달되는 것 -->
-    <board-list-page-form :list-array="pageArray"/>
-  </div>
+  <Layout>
+    <template #content>
+    <br><br>
+      <router-link :to="{ name: 'BoardRegisterPage' }">
+        Create New Board
+      </router-link>
+      <v-simple-table>
+        <template v-slot:default>
+          <thead>
+            <tr>
+              <th class="text-center" width="80">No.</th>
+              <th class="text-center" width="320">제목</th>
+              <th class="text-center" width="100">작성자</th>
+            </tr>
+          </thead>
+          <!-- <board-list-page-form :list-array="pageArray"/> -->
+          <tbody>
+            <tr v-for="board in pageArray" :key="board.boardNo">
+              <td align="center">{{ board.boardNo }}</td>
+              <td align="center"><router-link :to="{ name: 'BoardReadPage',
+                                                    params: { boardNo: board.boardNo.toString() } }">{{ board.title }}</router-link></td>
+              <td align="center">{{ board.writer }}</td>
+            </tr>
+          </tbody>
+          <!-- <tbody>
+            <tr v-for="board of boards" :key="board.title">
+              <td style="color: gray">{{ board.boardNo }}</td> -->
+              <!-- <td><a @click="clickBoards(board.boardNo)">{{ board.title }}</a></td> -->
+           <!-- </tr>
+          </tbody> -->
+        </template>
+      </v-simple-table>
+      <div class="text-center">
+        <v-pagination
+          color="teal"
+          v-model="page"
+          :length="1"
+        ></v-pagination>
+      </div>
+    </template>
+    <!--
+    <div align="center">
+      <h2>Vuetify Real Board List</h2>
+      <router-link :to="{ name: 'BoardRegisterPage' }">
+        Create New Board
+      </router-link>
+      <board-list-page-form :list-array="pageArray"/>
+    </div>
+    -->
+  </Layout>
 </template>
 
 <script>
 import axios from 'axios'
-import BoardListPageForm from '@/components/BoardListPageForm.vue'
+// import BoardListPageForm from '@/components/BoardListPageForm.vue'
+import Layout from '../components/Layout'
 
 export default {
   name: 'BoardListPage',
   components: {
-    BoardListPageForm
+    // BoardListPageForm,
+    Layout
   },
   data () {
     return {
-      pageArray: []
+      pageArray: [],
+      page: 1
     }
   },
   // 빠르게 하기 위해서 여기에 그냥 axios 해버리기!

@@ -1,33 +1,31 @@
 <template>
-  <div>
-    <h3>Board List View</h3>
-    <!-- 게시판 표현해주기 -->
-    <table border="1">
-      <tr>
-        <th align="center" width="80">No</th>
-        <th align="center" width="320">Title</th>
-        <th align="center" width="100">Writer</th>
-        <th align="center" width="180">Registration Date</th>
-      </tr>
+  <v-card>
+    <v-content id="content">
+      <slot name="content" class="font">
+      </slot>
+    </v-content>
+    <!--
+    <div>
       <tr v-for="page in paginatedData" :key="page.boardNo">
         <td>{{ page.boardNo }}</td>
         <td><a @click="$router.push({ name: 'BoardReadPage' })">{{ page.title }}</a></td>
         <td>{{ page.writer }}</td>
         <td>{{ page.regData }}</td>
       </tr>
-    </table>
-    <div class="btn-cover">
-      <button :disabled="pageNum === 0"
-        @click="prevPage" class="page-btn">
-        이전
-      </button>
-      <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
-      <button :disabled="pageNum >= pageCount - 1"
-        @click="nextPage" class="page-btn">
-        다음
-      </button>
+      <div class="btn-cover">
+        <button :disabled="pageNum === 0"
+          @click="prevPage" class="page-btn">
+          이전
+        </button>
+        <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
+        <button :disabled="pageNum >= pageCount - 1"
+          @click="nextPage" class="page-btn">
+          다음
+        </button>
+      </div>
+      -->
     </div>
-  </div>
+  </v-card>
 </template>
 
 <script>

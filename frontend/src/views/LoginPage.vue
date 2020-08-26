@@ -1,6 +1,8 @@
 <template>
   <div align="center">
+    <br><br>
     <h1>Login Page</h1>
+    <br><br>
     <login-form @submit="onSubmit"/>
   </div>
 </template>

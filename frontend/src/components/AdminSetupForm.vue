@@ -2,40 +2,29 @@
   <form @submit.prevent="submit">
     <div id="app">
       <v-app id="inspire">
-        <v-container justify="center">
-          <v-row align="center">
+        <v-container align="center">
+          <v-row justify="center">
             <v-col
               cols="4">
-              <v-subheader>ID(아이디)</v-subheader>
-            </v-col>
-            <v-col cols="4">
+              <!-- <v-subheader>ID(아이디)</v-subheader> -->
               <v-text-field
+                color="teal lighten-4"
                 label="ID"
                 v-model="userId"
                 type="text"
                 placeholder="아이디를 생성해주세요."
               ></v-text-field>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="4">
               <v-subheader>Password(비밀번호)</v-subheader>
-            </v-col>
-            <v-col cols="4">
               <v-text-field
+                color="teal lighten-4"
                 label="Password"
                 v-model="userPw"
                 type="password"
                 placeholder="비밀번호를 생성해주세요."
               ></v-text-field>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="4">
               <v-subheader>UserName(성명)</v-subheader>
-            </v-col>
-            <v-col cols="4">
               <v-text-field
+                color="teal lighten-4"
                 label="User Name"
                 v-model="userName"
                 type="text"
@@ -45,7 +34,7 @@
           </v-row>
           <v-col class="text-center" cols="12" sm="4">
             <div class="my-2">
-              <v-btn type="submit" small>회원가입</v-btn>
+              <v-btn type="submit" small color="teal lighten-4">회원가입</v-btn>
             </div>
           </v-col>
         </v-container>
