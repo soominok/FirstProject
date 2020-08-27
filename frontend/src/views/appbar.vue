@@ -44,7 +44,6 @@ export default {
   name: 'Home',
   data: function () {
     return {
-      message: 'Vue Test Message'
     }
   },
   methods: {

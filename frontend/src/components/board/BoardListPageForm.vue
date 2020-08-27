@@ -1,31 +1,14 @@
 <template>
-  <v-card>
-    <v-content id="content">
-      <slot name="content" class="font">
-      </slot>
-    </v-content>
-    <!--
-    <div>
-      <tr v-for="page in paginatedData" :key="page.boardNo">
-        <td>{{ page.boardNo }}</td>
-        <td><a @click="$router.push({ name: 'BoardReadPage' })">{{ page.title }}</a></td>
-        <td>{{ page.writer }}</td>
-        <td>{{ page.regData }}</td>
-      </tr>
-      <div class="btn-cover">
-        <button :disabled="pageNum === 0"
-          @click="prevPage" class="page-btn">
-          이전
-        </button>
-        <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
-        <button :disabled="pageNum >= pageCount - 1"
-          @click="nextPage" class="page-btn">
-          다음
-        </button>
-      </div>
-      -->
-    </div>
-  </v-card>
+  <v-container fluid>
+    <v-data-iterator
+
+    >
+      <v-main id="content">
+        <slot name="boardList" class="font">
+        </slot>
+      </v-main>
+    </v-data-iterator>
+  </v-container>
 </template>
 
 <script>

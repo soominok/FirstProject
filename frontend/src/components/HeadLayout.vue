@@ -48,6 +48,7 @@
             v-model="tab"
             color="teal"
             fixed-tabs
+            right
             >
               <v-tab class="font-weight-black" @click="$router.push({ name: 'Main' })">홈</v-tab>
               <v-tab class="font-weight-black" @click="$router.push({ name: 'Keyword' })">증권키워드</v-tab>
@@ -87,7 +88,7 @@ export default {
   methods: {
     onClickLogout () {
       this.logout()
-      alert('Success Logout')
+      alert('로그아웃 성공~!')
       this.$router.push({ name: 'Home' })
     },
     login () {

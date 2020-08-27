@@ -1,14 +1,12 @@
 <template>
-  <div align="center">
-    <br><br>
+  <v-app align="center">
     <h1>Login Page</h1>
-    <br><br>
     <login-form @submit="onSubmit"/>
-  </div>
+  </v-app>
 </template>
 
 <script>
-import LoginForm from '@/components/LoginForm.vue'
+import LoginForm from '@/components/member/LoginForm.vue'
 import { mapActions } from 'vuex'
 
 export default {
@@ -20,10 +18,10 @@ export default {
     onSubmit (payload) {
       console.log('loginPage onSubmit()')
       this.login(payload).then(res => {
-        alert('Login Success')
+        alert('환영합니다.')
         this.$router.push({ name: 'Home' })
       }).catch(err => {
-        alert('Something Fail: ', err)
+        alert('아이디 또는 비밀번호를 다시 확인해주세요.', err)
       })
     },
     ...mapActions(['login'])

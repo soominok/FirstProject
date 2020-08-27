@@ -1,32 +1,5 @@
 <template>
   <Layout>
-    <template #menubar>
-      <div class="home">
-        <div id="header" v-if="isAuthorized">
-          <!--
-          <div id="app">
-            <v-row justify="end">
-              {{ myinfo.auth }}님, 접속을 환영합니다.
-            </v-row>
-          </div> -->
-          <!--
-          <v-btn @click="start('keyword')" text color="black"
-            style="padding: 10px; width: 90px;">증권키워드</v-btn>
-          <v-btn @click="$router.push({ name: 'BoardListPage' })" text color="black"
-            style="padding: 10px; width: 300px;">게시판</v-btn> -->
-          <v-btn @click="$router.push({ name: 'MyInfoPage' })" text color="teal"
-            style="padding: 5px; width: 90px;">MyPage</v-btn>
-          <v-btn @click="onClickLogout" text color="teal"
-            style="padding: 5px; width: 90px;">Logout</v-btn>
-        </div>
-        <div id="header" v-else>
-          <v-btn @click="$router.push({ name: 'LoginPage' })" text color="teal"
-            style="padding: 5px; width: 90px;">Login</v-btn>
-          <v-btn @click="$router.push({ name: 'MemberRegisterPage' })" text color="teal"
-            style="padding: 5px; width: 90px;">Register</v-btn>
-        </div>
-      </div>
-    </template>
   </Layout>
 </template>
 

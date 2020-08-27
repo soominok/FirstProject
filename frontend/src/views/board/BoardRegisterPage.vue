@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import BoardRegisterForm from '@/components/BoardRegisterForm'
+import BoardRegisterForm from '@/components/board/BoardRegisterForm'
 import axios from 'axios'
 
 export default {

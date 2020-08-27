@@ -3,15 +3,15 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Main from '../views/Main.vue'
 
-import LoginPage from '../views/LoginPage.vue'
-import AdminSetupPage from '../views/AdminSetupPage.vue'
-import MemberRegisterPage from '../views/MemberRegisterPage.vue'
-import MyInfoPage from '../views/MyInfoPage.vue'
+import LoginPage from '../views/member/LoginPage.vue'
+import AdminSetupPage from '../views/member/AdminSetupPage.vue'
+import MemberRegisterPage from '../views/member/MemberRegisterPage.vue'
+import MyInfoPage from '../views/member/MyInfoPage.vue'
 
-import BoardListPage from '../views/BoardListPage.vue'
-import BoardRegisterPage from '../views/BoardRegisterPage.vue'
-import BoardReadPage from '../views/BoardReadPage.vue'
-import BoardModifyPage from '../views/BoardModifyPage.vue'
+import BoardListPage from '../views/board/BoardListPage.vue'
+import BoardRegisterPage from '../views/board/BoardRegisterPage.vue'
+import BoardReadPage from '../views/board/BoardReadPage.vue'
+import BoardModifyPage from '../views/board/BoardModifyPage.vue'
 
 Vue.use(VueRouter)
 

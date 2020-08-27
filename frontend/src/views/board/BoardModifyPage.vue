@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import BoardModifyForm from '@/components/BoardModifyForm'
+import BoardModifyForm from '@/components/board/BoardModifyForm'
 import { mapState, mapActions } from 'vuex'
 import axios from 'axios'
 

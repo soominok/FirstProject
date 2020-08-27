@@ -1,33 +1,6 @@
 <template>
-  <Layout>
-    <template #menubar>
-      <div class="home">
-        <div id="header" v-if="isAuthorized">
-          <!--
-          <div id="app">
-            <v-row justify="end">
-              {{ myinfo.auth }}님, 접속을 환영합니다.
-            </v-row>
-          </div> -->
-          <!--
-          <v-btn @click="start('keyword')" text color="black"
-            style="padding: 10px; width: 90px;">증권키워드</v-btn>
-          <v-btn @click="$router.push({ name: 'BoardListPage' })" text color="black"
-            style="padding: 10px; width: 300px;">게시판</v-btn> -->
-          <v-btn @click="$router.push({ name: 'MyInfoPage' })" text color="teal"
-            style="padding: 5px; width: 90px;">MyPage</v-btn>
-          <v-btn @click="onClickLogout" text color="teal"
-            style="padding: 5px; width: 90px;">Logout</v-btn>
-        </div>
-        <div id="header" v-else>
-          <v-btn @click="$router.push({ name: 'LoginPage' })" text color="teal"
-            style="padding: 5px; width: 90px;">Login</v-btn>
-          <v-btn @click="$router.push({ name: 'MemberRegisterPage' })" text color="teal"
-            style="padding: 5px; width: 90px;">Register</v-btn>
-        </div>
-      </div>
-    </template>
-  </Layout>
+  <v-app>
+  </v-app>
 </template>
 
 <script>
@@ -37,8 +10,8 @@
 import store from '../store'
 import Vue from 'vue'
 import cookies from 'vue-cookies'
-import Layout from '../components/Layout'
 import { mapState, mapGetters, mapActions } from 'vuex'
+
 Vue.use(cookies)
 export default {
   name: 'Home',
@@ -52,13 +25,6 @@ export default {
       alert('Success Logout')
       this.$router.push({ name: 'Home' })
     },
-    // onClickRegister (state) {
-    // if (myinfo.auth === 'ROLE_ADMIN') {
-    // this.$router.push({ name: 'AdminSetupPage' })
-    // } else {
-    // this.$router.push({ name: 'MemberRegisterPage' })
-    // }
-    // },
     clickBoards (boardNo) {
       console.log('clickBoards: ' + boardNo)
     },
@@ -75,7 +41,6 @@ export default {
     })
   },
   components: {
-    Layout
   }
 }
 </script>
