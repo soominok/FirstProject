@@ -1,4 +1,4 @@
 <template>
-  <v-main>
-  </v-main>
+  <div>
+  </div>
 </template>

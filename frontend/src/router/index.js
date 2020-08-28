@@ -13,6 +13,8 @@ import BoardRegisterPage from '../views/board/BoardRegisterPage.vue'
 import BoardReadPage from '../views/board/BoardReadPage.vue'
 import BoardModifyPage from '../views/board/BoardModifyPage.vue'
 
+import Keyword from '../views/keyword/Keyword.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,7 +31,7 @@ const routes = [
   {
     path: '/keyword',
     name: 'Keyword',
-    component: Main
+    component: Keyword
   },
   {
     path: '/loginPage',

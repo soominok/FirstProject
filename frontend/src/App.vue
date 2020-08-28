@@ -24,7 +24,7 @@ div {
   border: //1px solid #ccc;
 }
 #header {
-  height: 200px;
+  height: 170px;
 }
 
 #content {

@@ -1,29 +1,24 @@
 <template>
-  <Layout>
-    <template #content>
-      <div align="center">
-        <h2>Detailed Board List</h2>
-        <!-- mapping 해주기 -->
-        <board-read v-if="board" :board="board"/>
-        <!-- 내용을 가져오지 못했을 경우 표기해주기 -->
-        <p v-else>Loading ...</p>
-        <router-link :to="{ name: 'BoardModifyPage', params: { boardNo } }">
-          Edit
-        </router-link>
-        <button @click="onDelete">Delete</button>
-        <router-link :to="{ name: 'BoardListPage' }">
-          List
-        </router-link>
+  <v-main>
+    <div align="center">
+      <!-- mapping 해주기 -->
+      <board-read v-if="board" :board="board"/>
+      <!-- 내용을 가져오지 못했을 경우 표기해주기 -->
+      <p v-else>Loading ...</p>
+      <div class="center">
+      <br>
+        <v-btn @click="$router.push({ name: 'BoardModifyPage', params: { boardNo } })" class="teal lighten-2">Edit</v-btn>
+        <v-btn @click="onDelete" class="teal lighten-3">Delete</v-btn>
+        <v-btn @click="$router.push({ name: 'BoardListPage' })" class="teal lighten-2">List</v-btn>
       </div>
-    </template>
-  </Layout>
+    </div>
+  </v-main>
 </template>
 
 <script>
 import BoardRead from '@/components/board/BoardRead'
 import { mapState, mapActions } from 'vuex'
 import axios from 'axios'
-import Layout from '@/components/Layout.vue'
 
 export default {
   name: 'BoardReadPage',
@@ -46,7 +41,6 @@ export default {
         this.$router.push()
       })
   },
-
   methods: {
     ...mapActions([
       'fetchBoard'
@@ -66,8 +60,7 @@ export default {
     }
   },
   components: {
-    BoardRead,
-    Layout
+    BoardRead
   }
 }
 </script>
