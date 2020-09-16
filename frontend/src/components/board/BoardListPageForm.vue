@@ -1,22 +1,103 @@
 <template>
-  <v-container fluid>
-    <v-data-iterator
-
-    >
-      <v-main id="content">
-        <slot name="boardList" class="font">
-        </slot>
-      </v-main>
-    </v-data-iterator>
-  </v-container>
+  <v-main>
+    <div class="ma-1 pa-5" justify="center" align="center">
+    <br>
+      <v-card>
+      <br>
+        <h2>"경제, 증권 관련 자유롭게 의견을 공유하세요."</h2>
+        <v-container>
+          <v-simple-table
+            id="tableBorder"
+            flat
+            :search="search"
+            hide-default-footer
+          >
+            <thead justify="center">
+              <tr>
+                <th class="text-center text-h6 font-weight-bold teal white--text" width="80">No.</th>
+                <th class="text-center text-h6 font-weight-bold teal white--text" width="320">제목</th>
+                <th class="text-center text-h6 font-weight-bold teal white--text" width="100">작성자</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="board in paginatedData" :key="board.boardNo">
+                <td align="center">{{ board.boardNo }}</td>
+                <td align="center"><router-link :to="{ name: 'BoardReadPage',
+                                                      params: { boardNo: board.boardNo.toString() } }">{{ board.title }}</router-link></td>
+                <td align="center">{{ board.writer }}</td>
+              </tr>
+            </tbody>
+          </v-simple-table>
+          <br>
+          <v-toolbar
+            flat
+            color="white"
+            class="mb-1"
+          >
+            <v-col sm="4">
+              <v-text-field
+                v-model="search"
+                clearable
+                color="teal"
+                flat
+                solo
+                outlined
+                hide-details
+                label="Search"
+                append-icon="mdi-magnify"
+              ></v-text-field>
+            </v-col>
+            <!-- <v-spacer></v-spacer> -->
+            <v-btn @click="$router.push({ name: 'BoardRegisterPage' })"
+              title outlined color="teal"
+              class="ma-2 white--text">
+              <v-icon left>mdi-pencil</v-icon>New Board</v-btn>
+            <v-spacer></v-spacer>
+            <div align="center" justify="center">
+              <v-btn
+                fab
+                color="teal"
+                class="mr-5 white--text"
+                @click="formerPage"
+                small
+              >
+                <v-icon>mdi-chevron-left</v-icon>
+              </v-btn>
+              <span
+                class="mr-4 teal--text"
+              >
+                Page {{ pageNum + 1 }} of {{ pageCount }}
+              </span>
+              <v-btn
+                fab
+                dark
+                color="teal"
+                class="ml-1 white--text"
+                @click="nextPage"
+                small
+              >
+                <v-icon fab dark>mdi-chevron-right</v-icon>
+              </v-btn>
+            </div>
+          </v-toolbar>
+        </v-container>
+      </v-card>
+    </div>
+  </v-main>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'BoardListPageForm',
   data () {
     return {
-      pageNum: 0
+      pageArray: [],
+      pageNum: 0,
+      itemsPerPage: 6,
+      search: '',
+      filter: {}
     }
   },
   props: {
@@ -27,16 +108,18 @@ export default {
     pageSize: {
       type: Number,
       required: true,
-      default: 5
+      default: 6
     }
   },
-  methods: {
-    nextPage () {
-      this.pageNum += 1
-    },
-    prevPage () {
-      this.pageNum -= 1
-    }
+  created () {
+    axios.get('http://localhost:5555/boards')
+      .then(res => {
+        console.log(res)
+        this.pageArray = res.data
+      })
+      .catch(err => {
+        console.log(err)
+      })
   },
   computed: {
     pageCount () {
@@ -44,17 +127,24 @@ export default {
       const listSize = this.pageSize
 
       let page = Math.floor(listLen / listSize)
-      // 남는 데이터가 있으면 +1을 해주고, 딱 떨어지면 그냥 page로!
       if (listLen % listSize > 0) {
         page += 1
       }
+
       return page
     },
     paginatedData () {
-      // 전체 들어온 데이터의 길이값을 보는 것.
       const start = this.pageNum * this.pageSize
       const end = start + this.pageSize
       return this.listArray.slice(start, end)
+    }
+  },
+  methods: {
+    nextPage () {
+      if (this.pageNum + 1 <= this.pageCount) this.pageNum += 1
+    },
+    formerPage () {
+      this.pageNum -= 1
     }
   }
 }

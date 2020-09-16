@@ -1,34 +1,35 @@
 <template>
-  <v-main>
-    <h3>Board Register Form</h3>
-    <br>
-    <v-simple-table align="center" border="2">
-      <div id="tableBorder">
-      <label>
-        <tr class="text-center" id="tableBorder">
-          <td width="300" height="35" class="blue-grey lighten-5">Title</td>
-          <td width="1000px" class="text-left"><input type="text" v-model="title" style="width: 800px;"></td>
-        </tr>
-      </label>
-      <label>
-        <tr class="text-center" id="tableBorder">
-          <td width="300" height="35" class="blue-grey lighten-5">Writer</td>
-          <td width="1000" class="text-left"><input type="text" v-model="writer"></td>
-        </tr>
-      </label>
-      <label>
-        <tr class="text-center" id="tableBorder">
-          <td width="300" height="35" class="blue-grey lighten-5">Content</td>
-          <td width="1000" class="text-left"><textarea v-model="content" rows="5"></textarea></td>
-        </tr>
-      </label>
-      </div>
-    </v-simple-table>
-      <div>
+  <v-main align="center">
+    <form @submit.prevent="onSubmit">
       <br><br>
-        <v-btn @click="submit" color="teal">Register</v-btn>
-        <v-btn style="margin-left: 10px;" @click="$router.push({ name: 'BoardListPage' })" color="teal">Cancel</v-btn>
-      </div>
+      <v-card width="1200" height="550" class="mx-auto">
+        <br>
+        <h2>Board Register Form</h2><br>
+        <v-simple-table justify="center" align="center">
+          <div style="border-collapse: collapse" class="px-15 mx-15">
+            <tr class="text-center" id="tableBorder">
+              <td width="300" height="35" class="blue-grey lighten-4">Title</td>
+              <td width="700" class="text-left"><input type="text" v-model="title" style="width: 100%;"></td>
+            </tr>
+            <tr class="text-center" id="tableBorder">
+              <td width="300" height="35" class="blue-grey lighten-4">Writer</td>
+              <td width="700" class="text-left"><input type="text" v-model="writer" style="width: 100%;"></td>
+            </tr>
+            <tr class="text-center" id="tableBorder">
+              <td width="300" height="150" class="blue-grey lighten-4">Content</td>
+              <td width="700" class="text-left"><textarea v-model="content" rows="5" style="width: 100%;"></textarea></td>
+            </tr>
+          </div>
+        </v-simple-table>
+        <div align="center">
+        <br>
+          <v-btn type="submit" title outlined color="blue darken-4" class="my-5 mx-3">
+            <v-icon left>mdi-checkbox-marked-circle</v-icon>Register</v-btn>
+          <v-btn @click="$router.push({ name: 'BoardListPage' })" title outlined color="red darken-2" class="my-5 mx-3">
+            <v-icon left>mdi-cancel</v-icon>Cancel</v-btn>
+        </div>
+      </v-card>
+    </form>
   </v-main>
 </template>
 

@@ -1,39 +1,62 @@
 <template>
   <v-main align="center">
-    <h3>Board Detailed View</h3>
+  <br><br>
+    <v-card width="1200" height="600" class="mx-auto">
     <br>
-      <v-simple-table align="center">
-        <div id="tableBorder">
+      <h2>Board Detailed View</h2><br>
+      <v-simple-table class="px-15 mx-15" >
+        <div class="mx-auto" style="border-collapse: collapse">
           <tr class="text-center" id="tableBorder">
-            <td width="300" height="35" class="blue-grey lighten-5">No</td>
-            <td width="1000" class="text-left"><input type="text" :value="board.boardNo" readonly></td>
+            <td width="300" height="35" class="blue-grey lighten-4">No</td>
+            <td width="700" class="text-left"><input type="text" :value="board.boardNo" style="width: 100%;" readonly></td>
           </tr>
 
           <tr class="text-center" id="tableBorder">
-            <td width="300" height="35">Title</td>
-            <td class="text-left"><input type="text" v-model="board.title" readonly width="900"></td>
+            <td width="300" height="35" class="blue-grey lighten-4">Title</td>
+            <td class="text-left"><input type="text" v-model="board.title" style="width: 100%;" readonly></td>
           </tr>
 
           <tr class="text-center" id="tableBorder">
-            <td width="300" height="35">Writer</td>
-            <td class="text-left"><input type="text" v-model="board.writer" readonly></td>
+            <td width="300" height="35" class="blue-grey lighten-4">Writer</td>
+            <td class="text-left"><input type="text" v-model="board.writer" style="width: 100%;" readonly></td>
           </tr>
 
           <tr class="text-center" id="tableBorder">
-            <td width="300" height="35">Registration Date</td>
-            <td class="text-left"><input type="text" :value="board.regDate" readonly></td>
+            <td width="300" height="35" class="blue-grey lighten-4">Registration Date</td>
+            <td class="text-left"><input type="text" :value="board.regDate" style="width: 100%;" readonly></td>
           </tr>
 
           <tr class="text-center" id="tableBorder">
-            <td width="300" height="150">Content</td>
-            <td class="text-left"><textarea v-model="board.content" rows="5" readonly></textarea></td>
+            <td width="300" height="90" class="blue-grey lighten-4" align="center">Content</td>
+            <td class="text-left"><textarea v-model="board.content" rows="5" style="width: 100%;" readonly></textarea></td>
           </tr>
         </div>
       </v-simple-table>
+      <div class="center">
+      <br>
+        <v-btn @click="$router.push({ name: 'BoardModifyPage', params: { boardNo } })"
+          title outlined color="primary"
+          class="my-5 mx-3"
+        >
+          <v-icon left>mdi-pencil</v-icon>Edit</v-btn>
+        <v-btn @click="onDelete"
+          title outlined color="red"
+          class="my-5 mx-3">
+          <v-icon left>mdi-delete</v-icon>Delete</v-btn>
+        <v-btn @click="$router.push({ name: 'BoardListPage' })"
+          title outlined color="orange darken-2"
+          class="my-5 mx-3"
+          >
+          <v-icon left>mdi-format-list-bulleted-square</v-icon>List</v-btn>
+      </div>
+    </v-card>
   </v-main>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import axios from 'axios'
+
 export default {
   name: 'BoardRead',
   props: {
@@ -41,14 +64,36 @@ export default {
       type: Object,
       required: true
     }
+  },
+  computed: {
+    ...mapState([
+      'board'
+    ])
+  },
+  methods: {
+    onDelete () {
+      const { boardNo } = this.board
+      axios.delete(`http://localhost:5555/boards/${boardNo}`)
+        // 처리정보를 res로 받아오기
+        .then(res => {
+          alert('Delete Success')
+          this.$router.push({ name: 'BoardListPage' })
+        })
+        // boardNo로 내용 가져오는데 문제 발생했을 경우
+        .catch(err => {
+          alert(err.response.data.message)
+        })
+    }
   }
 }
 </script>
 
 <style>
 #tableBorder {
-  margin-left: 100px;
-  border-collapse: collapse;
+  //border-collapse: collapse;
   border: 2px solid #777777;
 }
+  td {
+    padding: 10px;
+  }
 </style>

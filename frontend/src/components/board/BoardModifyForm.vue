@@ -1,29 +1,31 @@
 <template>
-  <div>
-    <h3>Board Modfied Form</h3>
+  <v-main>
+    <h3>Board Modified Form</h3>
     <form @submit.prevent="onSubmit">
-      <table>
-        <tr>
-          <td>No</td>
-          <td><input type="text" :value="board.boardNo" disabled></td>
-        </tr>
-        <tr>
-          <td>Registration Date</td>
-          <td><input type="text" :value="board.regDate" disabled></td>
-        </tr>
-        <tr>
-          <td>Title</td>
-          <td><input type="text" v-model="title"></td>
-        </tr>
-        <tr>
-          <td>Writer</td>
-          <td><input type="text" :value="board.writer" disabled></td>
-        </tr>
-        <tr>
-          <td>Content</td>
-          <td><textarea v-model="content" rows="5"></textarea></td>
-        </tr>
-      </table>
+      <v-simple-table align="center" boarder="2">
+        <div id="tableBorder">
+          <tr class="text-center" id="tableBorder">
+            <td width="300" height="35" class="blue-grey lighten-5">No</td>
+            <td width="1000px" class="text-left"><input type="text" :value="board.boardNo" disabled></td>
+          </tr>
+          <tr class="text-center" id="tableBorder">
+            <td width="300" height="35" class="blue-grey lighten-5">Registration Date</td>
+            <td width="1000px" class="text-left"><input type="text" :value="board.regDate" disabled></td>
+          </tr>
+          <tr class="text-center" id="tableBorder">
+            <td width="300" height="35" class="blue-grey lighten-5">Title</td>
+            <td width="1000px" class="text-left"><input type="text" v-model="title" style="width: 100%;"></td>
+          </tr>
+          <tr class="text-center" id="tableBorder">
+            <td width="300" height="35" class="blue-grey lighten-5">Writer</td>
+            <td width="1000px" class="text-left"><input type="text" :value="board.writer" disabled></td>
+          </tr>
+          <tr class="text-center" id="tableBorder">
+            <td width="300" height="35" class="blue-grey lighten-5">Content</td>
+            <td width="1000px" class="text-left"><textarea v-model="content" rows="5"></textarea></td>
+          </tr>
+        </div>
+      </v-simple-table>
 
       <div>
         <button type="submit">Modify</button>
@@ -32,19 +34,12 @@
         </router-link>
       </div>
     </form>
-
-    <!-- 누르면 수정이 완료되게 되는 것 -->
-    <!-- <button type="submit">Modification</button> -->
-    <!-- 누르면 되돌아 가는 것 -->
-    <!-- <router-link :to="{ name: 'BoardReadPage', params: { boardNo: 1} }">
-      Cancel
-    </router-link> -->
-  </div>
+  </v-main>
 </template>
 
 <script>
 export default {
-  name: 'BoardModfiyForm',
+  name: 'BoardModifyForm',
   props: {
     board: {
       type: Object,
