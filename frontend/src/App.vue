@@ -3,7 +3,7 @@
     <div id="header">
       <head-layout/>
     </div>
-    <div id="content" >
+    <div id="content">
       <router-view/>
     </div>
   </v-app>
@@ -11,7 +11,6 @@
 
 <script>
 import HeadLayout from '@/components/HeadLayout'
-
 export default {
   components: {
     HeadLayout
@@ -20,15 +19,15 @@ export default {
 </script>
 
 <style scoped>
-div {
-  border: //1px solid #ccc;
-}
 #header {
-  height: 170px;
+  height: 100px;
 }
-
 #content {
-  margin-left: 100px;
-  margin-right: 200px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #d3d3d3;
 }
 </style>
+// background: #333333;
+// background: #f9f9f9;
