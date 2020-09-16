@@ -1,14 +1,14 @@
 <template>
-  <v-main>
-    <div align="center">
-      <board-register-form @submit="onSubmit"/>
-    </div>
-  </v-main>
+  <div align="center">
+    <h2>Board Register</h2>
+    <board-register-form @submit="onSubmit"/>
+  </div>
 </template>
 
 <script>
 import BoardRegisterForm from '@/components/board/BoardRegisterForm'
 import axios from 'axios'
+
 export default {
   name: 'BoardRegisterPage',
   components: {
@@ -22,7 +22,7 @@ export default {
         .then(res => {
           console.log(res)
           // 성공했다는 알림 띄움.
-          alert('게시글 등록 성공!!')
+          alert('Register Success')
           this.$router.push({
             name: 'BoardReadPage',
             params: { boardNo: res.data.boardNo.toString() }

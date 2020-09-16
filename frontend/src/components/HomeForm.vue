@@ -1,14 +1,6 @@
 <template>
-  <v-main>
-  <br><br>
-    <v-carousel hide-delimiters>
-      <v-carousel-item
-        v-for="(item,i) in items"
-        :key="i"
-        :src="item.src"
-      ></v-carousel-item>
-    </v-carousel>
-  </v-main>
+  <v-app>
+  </v-app>
 </template>
 
 <script>
@@ -19,18 +11,11 @@ import store from '../store'
 import Vue from 'vue'
 import cookies from 'vue-cookies'
 import { mapState, mapGetters, mapActions } from 'vuex'
-
 Vue.use(cookies)
-
 export default {
   name: 'Home',
   data: function () {
     return {
-      items: [
-        {
-          src: 'https://investorplace.com/wp-content/uploads/2019/05/stock-picks-1024x683.jpg'
-        }
-      ]
     }
   },
   methods: {

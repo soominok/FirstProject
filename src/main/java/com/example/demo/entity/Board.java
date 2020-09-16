@@ -16,7 +16,7 @@ import java.util.Date;
 @ToString
 @Entity
 @Table(name = "board")
-public class VueBoard {
+public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_no")
@@ -34,4 +34,5 @@ public class VueBoard {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @CreationTimestamp
     private Date regDate;
+
 }

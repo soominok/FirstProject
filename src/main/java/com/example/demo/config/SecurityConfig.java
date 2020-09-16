@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // ls-al, chowm 사용해서 권한 변환해준 것과 같은 역할
     // interface가 2개 들어있음 (~~Builder : lombok처럼 자동으로 서포트해주는 역할)
     protected void configure(HttpSecurity http) throws Exception {
-        log.info("Security Configuration");
+        // log.info("Security Configuration");
 
         // 외부에서 요청 들어오는 것도 corsorigin 발생시키지 않겠다!
         // httpSecurity 자체를 내부에서 사용하겠다는 것.
@@ -90,16 +90,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     // 엔코딩을 암호화 복코딩을 복호화 하는 것.
-   @Bean
-   public PasswordEncoder createPasswordEncoder() {
+    @Bean
+    public PasswordEncoder createPasswordEncoder() {
         return new BCryptPasswordEncoder();
-   }
+    }
 
     // 커스텀 요소 중 하나
-   @Bean
+    @Bean
     public UserDetailsService createUserDetailsService() {
         return new CustomUserDetailsService();
-   }
+    }
 
     // -------------------------------------이렇게 묶여있음.----------------------------------------
 

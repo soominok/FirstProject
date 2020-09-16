@@ -5,7 +5,6 @@ import com.example.demo.entity.MemberAuth;
 import com.example.demo.repository.MemberRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,8 +15,11 @@ import java.util.List;
 public class MemberServiceImpl implements MemberService {
     static final Logger log = LoggerFactory.getLogger(MemberServiceImpl.class);
 
-    @Autowired
-    private MemberRepository repository;
+    final MemberRepository repository;
+
+    public MemberServiceImpl(MemberRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public void register(Member member) throws Exception{

@@ -20,7 +20,4 @@ public class ErrorInfoApi implements Serializable {
         details.add(new DetailErrorInfoApi(target, message));
     }
 
-    public List<DetailErrorInfoApi> getDetails() {
-        return details;
-    }
 }

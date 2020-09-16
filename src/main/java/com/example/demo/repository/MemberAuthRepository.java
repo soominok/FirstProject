@@ -37,4 +37,4 @@ public class MemberAuthRepository {
 }
 
 /*select count(*) as count from member_auth where auth = 'ROLE_ADMIN';
-*/
+ */

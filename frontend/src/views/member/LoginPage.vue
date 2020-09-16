@@ -1,8 +1,14 @@
 <template>
-  <v-app align="center">
-    <h1>Login Page</h1>
-    <login-form @submit="onSubmit"/>
-  </v-app>
+  <v-main align="center">
+  <br><br>
+    <v-card width="600" class="px-auto mx-auto my-13">
+    <br>
+      <h1>Login Page</h1>
+      <v-row justify="center">
+        <login-form @submit="onSubmit"/>
+      </v-row>
+    </v-card>
+  </v-main>
 </template>
 
 <script>
@@ -11,6 +17,11 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'LoginPage',
+  data () {
+    return {
+      dialog: false
+    }
+  },
   components: {
     LoginForm
   },

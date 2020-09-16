@@ -9,15 +9,27 @@
     >
       <v-toolbar extended extension-height="50">
         <!-- <v-app-bar-nav-icon color="teal"></v-app-bar-nav-icon> -->
-        <v-toolbar-title class="display-1 teal--text"><div @click="home">First Project</div></v-toolbar-title>
+        <v-toolbar-title class="text-h4 teal--text"><div @click="home">Stock Know</div></v-toolbar-title>
 
         <v-spacer></v-spacer>
 
-        <v-btn icon color="teal">
+        <!-- <v-btn icon color="teal">
           <v-icon>mdi-magnify</v-icon>
-        </v-btn>
+        </v-btn> -->
 
-        <div class="home">
+        <v-col sm="2">
+          <v-text-field
+            append-icon="mdi-magnify"
+            color="teal"
+            rows="1"
+            row-height="10"
+            clearable
+            flat
+            hide-details
+            label="Search"
+          ></v-text-field>
+        </v-col>
+        <div class= "home">
           <div id="header" v-if="isAuthorized">
             <!--
             <div id="app">
@@ -51,8 +63,15 @@
           right
           >
             <v-tab class="font-weight-black" @click="home">홈</v-tab>
+              <!-- <v-tab-item value="/"></v-tab-item> -->
             <v-tab class="font-weight-black" @click="keyword">증권키워드</v-tab>
             <v-tab class="font-weight-black" @click="boardList">게시판</v-tab>
+            <v-tab-item
+              v-for="i in tabs"
+              :key="i"
+              :value="'tab-' + i"
+            >
+            </v-tab-item>
           </v-tabs>
         </template>
        </v-toolbar>
@@ -70,18 +89,19 @@
 /* eslint-disable no-unused-vars */
 import router from '../router'
 import { mapState, mapGetters, mapActions } from 'vuex'
-
 export default {
   data: () => ({
     drawer: false,
     left: false,
     tab: null,
+    tabs: 3,
     items: [
       { title: '로그인' },
       { title: '회원가입' }
     ],
     menus: [
-      '홈', '증권키워드분석', '게시판'
+      { title: '산업 Talk' },
+      { title: '기업 Talk' }
     ]
   }),
   methods: {
@@ -90,14 +110,14 @@ export default {
       alert('로그아웃 성공~!')
       this.$router.push({ name: 'Home' })
     },
+    home () {
+      this.$router.push('/').catch(() => {})
+    },
     login () {
       this.$router.push({ name: 'LoginPage' }).catch(() => {})
     },
     boardList () {
       this.$router.push({ name: 'BoardListPage' }).catch(() => {})
-    },
-    home () {
-      this.$router.push('/').catch(() => {})
     },
     keyword () {
       this.$router.push('/keyword').catch(() => {})

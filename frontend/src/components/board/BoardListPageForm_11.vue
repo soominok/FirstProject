@@ -6,28 +6,16 @@
       <br>
         <h2>"경제, 증권 관련 자유롭게 의견을 공유하세요."</h2>
         <v-container>
-          <v-simple-table
+          <v-data-table
             id="tableBorder"
             flat
+            @click:row="rowData"
             :search="search"
+            :items="paginatedData"
+            :items-per-page="5"
             hide-default-footer
           >
-            <thead justify="center">
-              <tr>
-                <th class="text-center text-h6 font-weight-bold teal white--text" width="80">No.</th>
-                <th class="text-center text-h6 font-weight-bold teal white--text" width="320">제목</th>
-                <th class="text-center text-h6 font-weight-bold teal white--text" width="100">작성자</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="board in paginatedData" :key="board.boardNo">
-                <td align="center">{{ board.boardNo }}</td>
-                <td align="center"><router-link :to="{ name: 'BoardReadPage',
-                                                      params: { boardNo: board.boardNo.toString() } }">{{ board.title }}</router-link></td>
-                <td align="center">{{ board.writer }}</td>
-              </tr>
-            </tbody>
-          </v-simple-table>
+          </v-data-table>
           <br>
           <v-toolbar
             flat
@@ -98,7 +86,15 @@ export default {
       pageArray: [],
       pageNum: 0,
       search: '',
-      filter: {}
+      filter: {},
+      headers: [
+        {
+          text: 'No.',
+          value: 'boardNo'
+        },
+        { text: '제목', value: 'title' },
+        { text: '작성자', value: 'writer' }
+      ]
     }
   },
   props: {
@@ -146,6 +142,9 @@ export default {
     },
     formerPage () {
       this.pageNum -= 1
+    },
+    rowData () {
+      this.$router("{ name: 'BoardReadPage',params: { boardNo: board.boardNo.toString() } }")
     }
   }
 }

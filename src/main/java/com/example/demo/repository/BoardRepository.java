@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.VueBoard;
+import com.example.demo.entity.Board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -16,12 +16,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class VueBoardRepository {
+public class BoardRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     // create 생성
-    public void create(VueBoard board) throws Exception{
+    public void create(Board board) throws Exception{
         // 우리가 지정한 값을 넣겠다.
         String query = "insert into board (title, content, writer) values (?, ?, ?)";
 
@@ -52,15 +52,15 @@ public class VueBoardRepository {
         board.setBoardNo(keyHolder.getKey().longValue());
     }
 
-    public VueBoard read(Long boardNo) throws Exception {
+    public Board read(Long boardNo) throws Exception {
         // jdbc query 날리기
-        List<VueBoard> results = jdbcTemplate.query(
+        List<Board> results = jdbcTemplate.query(
                 "select board_no, title, content, writer, reg_date " +
                         "from board where board_no = ?",
-                new RowMapper<VueBoard>() {
+                new RowMapper<Board>() {
                     @Override
-                    public VueBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
-                        VueBoard board = new VueBoard();
+                    public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        Board board = new Board();
 
                         board.setBoardNo(rs.getInt("board_no"));
                         board.setTitle(rs.getString("title"));
@@ -80,7 +80,7 @@ public class VueBoardRepository {
         return results.isEmpty() ? null : results.get(0);
     }
 
-    public void update(VueBoard board) throws Exception {
+    public void update(Board board) throws Exception {
         String query = "update board set title = ?, content = ? " +
                 "where board_no = ?";
         // query에 들어갈 값들이 이 밑에 board.getTitle(), board.getContent(), board.getBoardNo() 값들임!!!
@@ -93,14 +93,14 @@ public class VueBoardRepository {
         jdbcTemplate.update(query, boardNo);
     }
 
-    public List<VueBoard> list() throws Exception {
-        List<VueBoard> results = jdbcTemplate.query(
+    public List<Board> list() throws Exception {
+        List<Board> results = jdbcTemplate.query(
                 "select board_no, title, content, writer, reg_date from board " +
                         "where board_no > 0 order by board_no desc, reg_date desc",
-                new RowMapper<VueBoard>() {
+                new RowMapper<Board>() {
                     @Override
-                    public VueBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
-                        VueBoard board = new VueBoard();
+                    public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        Board board = new Board();
 
                         board.setBoardNo(rs.getInt("board_no"));
                         board.setTitle(rs.getString("title"));
@@ -109,6 +109,29 @@ public class VueBoardRepository {
                         board.setRegDate(rs.getDate("reg_date"));
 
                         return board;
+                    }
+                }
+        );
+
+        return results;
+    }
+
+    public List<Board> search_title() throws Exception {
+        List<Board> results = jdbcTemplate.query(
+                "select board_no, title, content, writer, reg_date from board where title = ?",
+                new RowMapper<Board>() {
+                    @Override
+                    public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        Board board = new Board();
+
+                        board.setBoardNo(rs.getInt("board_no"));
+                        board.setTitle(rs.getString("title"));
+                        board.setContent(rs.getString("content"));
+                        board.setWriter(rs.getString("writer"));
+                        board.setRegDate(rs.getDate("reg_date"));
+
+                        return board;
+
                     }
                 }
         );

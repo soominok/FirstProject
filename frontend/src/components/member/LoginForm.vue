@@ -3,10 +3,7 @@
     <div id="app">
       <v-container align="center">
         <v-row justify="center">
-          <v-col
-            cols="12"
-            sm="5"
-            >
+          <v-col>
             <v-text-field
               color="teal lighten-4"
               v-model="userId"
@@ -22,12 +19,16 @@
             ></v-text-field>
           </v-col>
         </v-row>
-        <div class="text-center" cols="12" sm="4">
-          <v-btn class="my-2" type="submit" small color="teal lighten-4">로그인</v-btn>
-          <v-btn type="register" small>회원가입</v-btn>
-        </div>
+        <v-spacer></v-spacer>
       </v-container>
     </div>
+    <div class="text-center">
+      <v-btn class="my-1 mx-2" type="submit" color="green lighten-2">로그인</v-btn>
+      <v-btn @click="register" class="mx-2" color="blue lighten-2">회원가입</v-btn>
+      <br>
+      <v-btn @click="findIdPw" class="my-1" color="red lighten-3">아이디/패스워드 찾기</v-btn>
+    </div>
+    <br><br>
   </form>
 </template>
 
@@ -51,6 +52,9 @@ export default {
     },
     register () {
       this.$router.push('/memberRegisterPage').catch(() => {})
+    },
+    findIdPw () {
+      this.$router.push('/findIDPW').catch(() => {})
     }
   }
 }

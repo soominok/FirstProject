@@ -2,7 +2,7 @@
   <v-main>
     <div align="center">
       <!-- mapping 해주기 -->
-      <board-read v-if="board" :board="board"/>
+      <board-read v-if="board" :boardNo="boardNo" :board="board"/>
       <!-- 내용을 가져오지 못했을 경우 표기해주기 -->
       <p v-else>Loading ...</p>
     </div>
@@ -27,7 +27,7 @@ export default {
     ])
   },
   created () {
-    console.log('BoadReadPage created(): ' + this.boardNo)
+    console.log('BoardReadPage created(): ' + this.boardNo)
     this.fetchBoard(this.boardNo)
       .catch(err => {
         alert(err.response.data.message)

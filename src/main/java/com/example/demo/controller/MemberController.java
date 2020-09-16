@@ -118,10 +118,11 @@ public class MemberController {
         } else {
             member.setJob("Member");
             service.register(member);
+            return new ResponseEntity<>("SUCCESS MEMBER REGISTER", HttpStatus.OK);
 
         }
-         String message = messageSource.getMessage("common.cannotSetupAdmin", null, Locale.KOREAN);
-         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        // String message = messageSource.getMessage("common.cannotSetupAdmin", null, Locale.KOREAN);
+        // return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
     // 내정보 확인하기
     @GetMapping("/myinfo")

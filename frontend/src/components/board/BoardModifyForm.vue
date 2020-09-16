@@ -1,38 +1,48 @@
 <template>
   <v-main>
-    <h3>Board Modified Form</h3>
     <form @submit.prevent="onSubmit">
-      <v-simple-table align="center" boarder="2">
-        <div id="tableBorder">
-          <tr class="text-center" id="tableBorder">
-            <td width="300" height="35" class="blue-grey lighten-5">No</td>
-            <td width="1000px" class="text-left"><input type="text" :value="board.boardNo" disabled></td>
-          </tr>
-          <tr class="text-center" id="tableBorder">
-            <td width="300" height="35" class="blue-grey lighten-5">Registration Date</td>
-            <td width="1000px" class="text-left"><input type="text" :value="board.regDate" disabled></td>
-          </tr>
-          <tr class="text-center" id="tableBorder">
-            <td width="300" height="35" class="blue-grey lighten-5">Title</td>
-            <td width="1000px" class="text-left"><input type="text" v-model="title" style="width: 100%;"></td>
-          </tr>
-          <tr class="text-center" id="tableBorder">
-            <td width="300" height="35" class="blue-grey lighten-5">Writer</td>
-            <td width="1000px" class="text-left"><input type="text" :value="board.writer" disabled></td>
-          </tr>
-          <tr class="text-center" id="tableBorder">
-            <td width="300" height="35" class="blue-grey lighten-5">Content</td>
-            <td width="1000px" class="text-left"><textarea v-model="content" rows="5"></textarea></td>
-          </tr>
-        </div>
-      </v-simple-table>
+    <br><br>
+      <v-card width="1200" height="550" class="mx-auto">
+        <br>
+        <h2>Board Modification</h2>
+        <br>
+        <v-simple-table class="px-15 mx-15">
+          <div class="mx-auto" style="border-collapse: collapse">
+            <tr class="text-center" id="tableBorder">
+              <td width="300" height="35" class="blue-grey lighten-4">No</td>
+              <td width="700" class="text-left"><input type="text" :value="board.boardNo" style="width: 100%;" disabled></td>
+            </tr>
 
-      <div>
-        <button type="submit">Modify</button>
-        <router-link :to="{ name: 'BoardReadPage', params: { boardNo: board.boardNo.toString() } }">
-          Cancel
-        </router-link>
-      </div>
+            <tr class="text-center" id="tableBorder">
+              <td width="300" height="35" class="blue-grey lighten-4">Title</td>
+              <td class="text-left"><input type="text" v-model="board.title" style="width: 100%;"></td>
+            </tr>
+
+            <tr class="text-center" id="tableBorder">
+              <td width="300" height="35" class="blue-grey lighten-4">Writer</td>
+              <td class="text-left"><input type="text" v-model="board.writer" style="width: 100%;" disabled></td>
+            </tr>
+
+            <tr class="text-center" id="tableBorder">
+              <td width="300" height="35" class="blue-grey lighten-4">Registration Date</td>
+              <td class="text-left"><input type="text" :value="board.regDate" style="width: 100%;" disabled></td>
+            </tr>
+
+            <tr class="text-center" id="tableBorder">
+              <td width="300" height="90" class="blue-grey lighten-4" align="center">Content</td>
+              <td class="text-left"><textarea v-model="board.content" rows="5" style="width: 100%;"></textarea></td>
+            </tr>
+          </div>
+        </v-simple-table>
+
+        <div>
+          <v-btn type="submit" title outlined color="success" class="my-5 mx-3">
+            <v-icon left>mdi-pencil</v-icon>Modify</v-btn>
+          <v-btn @click="$router.push({ name: 'BoardReadPage', params: { boardNo: board.boardNo.toString() } })"
+            title outlined color="red" class="my-5 mx-3">
+            <v-icon left>mdi-pencil</v-icon>Cancel</v-btn>
+        </div>
+      </v-card>
     </form>
   </v-main>
 </template>

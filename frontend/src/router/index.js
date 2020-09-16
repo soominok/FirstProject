@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Main from '../views/Main.vue'
+// import Main from '../views/Main.vue'
 
 import LoginPage from '../views/member/LoginPage.vue'
-import AdminSetupPage from '../views/member/AdminSetupPage.vue'
+// import AdminSetupPage from '../views/member/AdminSetupPage.vue'
 import MemberRegisterPage from '../views/member/MemberRegisterPage.vue'
+import FindIDPW from '../views/member/FindIDPW.vue'
 import MyInfoPage from '../views/member/MyInfoPage.vue'
 
 import BoardListPage from '../views/board/BoardListPage.vue'
@@ -13,7 +14,7 @@ import BoardRegisterPage from '../views/board/BoardRegisterPage.vue'
 import BoardReadPage from '../views/board/BoardReadPage.vue'
 import BoardModifyPage from '../views/board/BoardModifyPage.vue'
 
-import Keyword from '../views/keyword/Keyword.vue'
+import Keyword from '../views/stock/Keyword.vue'
 
 Vue.use(VueRouter)
 
@@ -23,11 +24,11 @@ const routes = [
     name: 'Home',
     component: Home
   },
-  {
-    path: '/main',
-    name: 'Main',
-    component: Main
-  },
+  //  {
+  //    path: '/main',
+  //    name: 'Main',
+  //    component: Main
+  //  },
   {
     path: '/keyword',
     name: 'Keyword',
@@ -40,18 +41,25 @@ const routes = [
       default: LoginPage
     }
   },
-  {
-    path: '/adminSetupPage',
-    name: 'AdminSetupPage',
-    components: {
-      default: AdminSetupPage
-    }
-  },
+  // {
+  //   path: '/adminSetupPage',
+  //   name: 'AdminSetupPage',
+  //   components: {
+  //     default: AdminSetupPage
+  //   }
+  // },
   {
     path: '/memberRegisterPage',
     name: 'MemberRegisterPage',
     components: {
       default: MemberRegisterPage
+    }
+  },
+  {
+    path: '/findIDPW',
+    name: 'FindIDPW',
+    components: {
+      default: FindIDPW
     }
   },
   {

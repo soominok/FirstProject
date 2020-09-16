@@ -1,6 +1,13 @@
 <template>
-  <Layout>
-  </Layout>
+  <v-app>
+    <v-carousel hide-delimiters>
+      <v-carousel-item
+        v-for="(item,i) in items"
+        :key="i"
+        :src="item.src"
+      ></v-carousel-item>
+    </v-carousel>
+  </v-app>
 </template>
 
 <script>
@@ -10,14 +17,17 @@
 import store from '../store'
 import Vue from 'vue'
 import cookies from 'vue-cookies'
-import Layout from '../components/Layout'
 import { mapState, mapGetters, mapActions } from 'vuex'
 Vue.use(cookies)
 export default {
   name: 'Home',
   data: function () {
     return {
-      message: 'Vue Test Message'
+      items: [
+        {
+          src: 'https://investorplace.com/wp-content/uploads/2019/05/stock-picks-1024x683.jpg'
+        }
+      ]
     }
   },
   methods: {
@@ -26,13 +36,6 @@ export default {
       alert('Success Logout')
       this.$router.push({ name: 'Home' })
     },
-    // onClickRegister (state) {
-    // if (myinfo.auth === 'ROLE_ADMIN') {
-    // this.$router.push({ name: 'AdminSetupPage' })
-    // } else {
-    // this.$router.push({ name: 'MemberRegisterPage' })
-    // }
-    // },
     clickBoards (boardNo) {
       console.log('clickBoards: ' + boardNo)
     },
@@ -49,7 +52,6 @@ export default {
     })
   },
   components: {
-    Layout
   }
 }
 </script>

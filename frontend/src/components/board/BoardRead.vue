@@ -60,8 +60,8 @@ import axios from 'axios'
 export default {
   name: 'BoardRead',
   props: {
-    board: {
-      type: Object,
+    boardNo: {
+      type: String,
       required: true
     }
   },
@@ -84,6 +84,10 @@ export default {
           alert(err.response.data.message)
         })
     }
+  },
+  mounted () {
+    console.log('this.boardNo : ' + this.boardNo)
+    console.log('route boardNo : ' + this.$route.params.boardNo)
   }
 }
 </script>
