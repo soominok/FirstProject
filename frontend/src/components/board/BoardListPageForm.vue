@@ -2,32 +2,24 @@
   <v-main>
     <div class="ma-1 pa-5" justify="center" align="center">
     <br>
-      <v-card>
+      <v-card width="1300">
       <br>
-        <h2>"경제, 증권 관련 자유롭게 의견을 공유하세요."</h2>
+        <h3>"경제, 증권 관련 자유롭게 의견을 공유하세요."</h3>
         <v-container>
-          <v-simple-table
-            id="tableBorder"
-            flat
-            :search="search"
-            hide-default-footer
-          >
-            <thead justify="center">
-              <tr>
-                <th class="text-center text-h6 font-weight-bold teal white--text" width="80">No.</th>
-                <th class="text-center text-h6 font-weight-bold teal white--text" width="320">제목</th>
-                <th class="text-center text-h6 font-weight-bold teal white--text" width="100">작성자</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="board in paginatedData" :key="board.boardNo">
-                <td align="center">{{ board.boardNo }}</td>
-                <td align="center"><router-link :to="{ name: 'BoardReadPage',
-                                                      params: { boardNo: board.boardNo.toString() } }">{{ board.title }}</router-link></td>
-                <td align="center">{{ board.writer }}</td>
-              </tr>
-            </tbody>
-          </v-simple-table>
+          <v-flex xs12>
+            <v-data-table
+              id="tableBorder"
+              flat
+              style="height: 50%"
+              @click:row="readData"
+              :search="search"
+              :headers="headers"
+              :items="paginatedData"
+              :loading="loading"
+              hide-default-footer
+            >
+            </v-data-table>
+          </v-flex>
           <br>
           <v-toolbar
             flat
@@ -52,7 +44,7 @@
             <!-- <v-spacer></v-spacer> -->
             <v-btn @click="$router.push({ name: 'BoardRegisterPage' })"
               title outlined color="teal"
-              class="ma-2 white--text">
+              class="ma-2 white--text" height="55">
               <v-icon left>mdi-pencil</v-icon>New Board</v-btn>
             <v-spacer></v-spacer>
             <div align="center" justify="center">
@@ -98,7 +90,14 @@ export default {
       pageArray: [],
       pageNum: 0,
       search: '',
-      filter: {}
+      filter: {},
+      boardLists: [],
+      headers: [
+        { text: 'No.', align: 'center', value: 'boardNo', sortable: true },
+        { text: '제목', align: 'center', value: 'title', sortable: true },
+        { text: '작성자', align: 'center', value: 'writer', sortable: false }
+      ],
+      loading: false
     }
   },
   props: {
@@ -109,7 +108,7 @@ export default {
     pageSize: {
       type: Number,
       required: true,
-      default: 6
+      default: 10
     }
   },
   created () {
@@ -146,6 +145,9 @@ export default {
     },
     formerPage () {
       this.pageNum -= 1
+    },
+    readData (item) {
+      this.$router.push({ name: 'BoardReadPage', params: { boardNo: item.boardNo } })
     }
   }
 }

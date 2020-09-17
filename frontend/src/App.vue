@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 #header {
-  height: 100px;
+  height: 85px;
 }
 #content {
   margin: 0;

@@ -1,7 +1,7 @@
 <template>
   <v-main align="center">
     <form @submit.prevent="onSubmit">
-      <br><br>
+      <br><br><br>
       <v-card width="1200" height="550" class="mx-auto">
         <br>
         <h2>Board Register Form</h2><br>

@@ -5,13 +5,13 @@
         <v-row justify="center">
           <v-col>
             <v-text-field
-              color="teal lighten-4"
               v-model="userId"
+              color="teal"
               label="Id"
               placeholder="아이디를 입력해주세요."
             ></v-text-field>
             <v-text-field
-              color="teal lighten-4"
+              color="teal"
               v-model="userPw"
               label="Password"
               type="password"

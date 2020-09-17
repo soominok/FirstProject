@@ -3,44 +3,27 @@
     <v-card
       color="white"
       flat
-      height="100px"
+      height="20px"
       title
       shrink-on-scroll
     >
-      <v-toolbar extended extension-height="50">
+      <v-toolbar extended extension-height="30">
         <!-- <v-app-bar-nav-icon color="teal"></v-app-bar-nav-icon> -->
         <v-toolbar-title class="text-h4 teal--text"><div @click="home">Stock Know</div></v-toolbar-title>
 
         <v-spacer></v-spacer>
 
-        <!-- <v-btn icon color="teal">
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn> -->
-
-        <v-col sm="2">
-          <v-text-field
-            append-icon="mdi-magnify"
-            color="teal"
-            rows="1"
-            row-height="10"
-            clearable
-            flat
-            hide-details
-            label="Search"
-          ></v-text-field>
-        </v-col>
         <div class= "home">
           <div id="header" v-if="isAuthorized">
-            <!--
             <div id="app">
-              <v-row justify="end">
+              <v-row justify="end" text color="teal" style="padding: 5px; width: 500px;">
                 {{ myinfo.auth }}님, 접속을 환영합니다.
+                <v-btn @click="$router.push({ name: 'MyInfoPage' })" text color="teal"
+                  style="padding: 5px; width: 90px;">MyPage</v-btn>
+                <v-btn @click="onClickLogout" text color="teal"
+                  style="padding: 5px; width: 90px;">Logout</v-btn>
               </v-row>
-            </div> -->
-            <v-btn @click="$router.push({ name: 'MyInfoPage' })" text color="teal"
-              style="padding: 5px; width: 90px;">MyPage</v-btn>
-            <v-btn @click="onClickLogout" text color="teal"
-              style="padding: 5px; width: 90px;">Logout</v-btn>
+            </div>
           </div>
           <div id="header" v-else>
             <v-btn @click="login" text color="teal"
@@ -50,10 +33,6 @@
           </div>
           <slot name="menubar"></slot>
         </div>
-
-        <v-btn icon color="teal">
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
 
         <template v-slot:extension>
           <v-tabs
