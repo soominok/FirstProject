@@ -2,24 +2,21 @@
   <v-main>
     <div class="ma-1 pa-5" justify="center" align="center">
     <br>
-      <v-card width="1300">
+      <v-card width="1300" height="600" outlined>
       <br>
-        <h3>"경제, 증권 관련 자유롭게 의견을 공유하세요."</h3>
+        <h3>Board List</h3>
         <v-container>
-          <v-flex xs12>
-            <v-data-table
-              id="tableBorder"
-              flat
-              style="height: 50%"
-              @click:row="readData"
-              :search="search"
-              :headers="headers"
-              :items="paginatedData"
-              :loading="loading"
-              hide-default-footer
-            >
-            </v-data-table>
-          </v-flex>
+          <v-data-table
+            id="tableBorder"
+            flat
+            @click:row="readData"
+            :search="search"
+            :headers="headers"
+            :items="paginatedData"
+            :loading="loading"
+            hide-default-footer
+          >
+          </v-data-table>
           <br>
           <v-toolbar
             flat
@@ -45,7 +42,7 @@
             <v-btn @click="$router.push({ name: 'BoardRegisterPage' })"
               title outlined color="teal"
               class="ma-2 white--text" height="55">
-              <v-icon left>mdi-pencil</v-icon>New Board</v-btn>
+              <v-icon center>mdi-pencil</v-icon></v-btn>
             <v-spacer></v-spacer>
             <div align="center" justify="center">
               <v-btn
@@ -108,7 +105,7 @@ export default {
     pageSize: {
       type: Number,
       required: true,
-      default: 10
+      default: 8
     }
   },
   created () {

@@ -26,7 +26,7 @@ export default {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: #d3d3d3;
+  //background: #d3d3d3;
 }
 </style>
 // background: #333333;

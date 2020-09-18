@@ -28,6 +28,7 @@ public class MemberServiceImpl implements MemberService {
         memEntity.setUserId(member.getUserId());
         memEntity.setUserPw(member.getUserPw());
         memEntity.setUserName(member.getUserName());
+        memEntity.setUserEmail(member.getUserEmail());
         memEntity.setJob(member.getJob());
 
         MemberAuth memberAuth = new MemberAuth();
@@ -46,6 +47,7 @@ public class MemberServiceImpl implements MemberService {
         memEntity.setUserId(member.getUserId());
         memEntity.setUserPw(member.getUserPw());
         memEntity.setUserName(member.getUserName());
+        memEntity.setUserEmail(member.getUserEmail());
         memEntity.setJob(member.getJob());
 
         MemberAuth memberAuth = new MemberAuth();
@@ -69,8 +71,9 @@ public class MemberServiceImpl implements MemberService {
             mem.setUserId((String) valArr[1]);
             mem.setUserPw((String) valArr[2]);
             mem.setUserName((String) valArr[3]);
-            mem.setJob((String) valArr[4]);
-            mem.setRegDate((Date) valArr[5]);
+            mem.setUserEmail((String) valArr[4]);
+            mem.setJob((String) valArr[5]);
+            mem.setRegDate((Date) valArr[6]);
 
             memberList.add(mem);
 

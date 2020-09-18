@@ -5,12 +5,14 @@
         <v-row justify="center">
           <v-col>
             <v-text-field
+              prepend-icon="mdi-account"
               v-model="userId"
               color="teal"
               label="Id"
               placeholder="아이디를 입력해주세요."
             ></v-text-field>
             <v-text-field
+              prepend-icon="mdi-lock"
               color="teal"
               v-model="userPw"
               label="Password"
@@ -23,10 +25,65 @@
       </v-container>
     </div>
     <div class="text-center">
-      <v-btn class="my-1 mx-2" type="submit" color="green lighten-2">로그인</v-btn>
-      <v-btn @click="register" class="mx-2" color="blue lighten-2">회원가입</v-btn>
+      <v-btn type="submit" color="green darken-3" outlined class="mx-2 ma-2">로그인</v-btn>
+      <v-btn @click="register" class="mx-2" outlined color="blue darken-3">회원가입</v-btn>
       <br>
-      <v-btn @click="findIdPw" class="my-1" color="red lighten-3">아이디/패스워드 찾기</v-btn>
+      <v-dialog v-model="dialog" persistent max-width="600px">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn text small v-bind="attrs" v-on="on">아이디/패스워드 찾기</v-btn>
+        </template>
+        <v-card>
+          <v-card-title>
+             <span class="headline">아이디 찾기</span>
+          </v-card-title>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col cols="12" sm="8" md="4">
+                  <v-text-field label="Name*" required></v-text-field>
+                </v-col>
+                <!-- <v-col cols="12" sm="6" md="4">
+                  <v-text-field label="Legal middle name" hint="example of helper text only on focus"></v-text-field>
+                </v-col>
+                <v-col cols="12" sm="8" md="4">
+                  <v-text-field
+                    label="Legal last name*"
+                    hint="example of persistent helper text"
+                    persistent-hint
+                    required
+                  ></v-text-field>
+                </v-col> -->
+                <v-col cols="12" sm="8">
+                  <v-text-field label="Email*" required></v-text-field>
+                </v-col>
+                <!-- <v-col cols="12">
+                  <v-text-field label="Password*" type="password" required></v-text-field>
+                </v-col> -->
+                <!-- <v-col cols="12" >
+                  <v-select
+                    :items="['0-17', '18-29', '30-54', '54+']"
+                    label="Age*"
+                    required
+                  ></v-select>
+                </v-col> -->
+                <v-col cols="12" sm="6">
+                  <v-autocomplete
+                    :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
+                    label="Interests"
+                    multiple
+                  ></v-autocomplete>
+                </v-col>
+              </v-row>
+            </v-container>
+            <small>*indicates required field</small>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+            <v-btn color="blue darken-1" text @click="dialog = false">Next</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </div>
     <br><br>
   </form>
@@ -41,7 +98,8 @@ export default {
   data () {
     return {
       userId: '',
-      userPw: ''
+      userPw: '',
+      dialog: false
     }
   },
   methods: {

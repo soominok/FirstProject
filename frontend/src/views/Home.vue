@@ -1,4 +1,4 @@
-<template>
+<template id="mainPage">
   <v-main>
   <br><br>
     <v-carousel hide-delimiters>

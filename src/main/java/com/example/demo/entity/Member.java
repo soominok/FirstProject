@@ -29,11 +29,14 @@ public class Member {
     @Column(length = 50, nullable = false)
     private String userId;
 
+    @Column(length = 200, nullable = false)
+    private String userPw;
+
     @Column(length = 100, nullable = false)
     private String userName;
 
-    @Column(length = 200, nullable = false)
-    private String userPw;
+    @Column(length = 255, nullable = false)
+    private String userEmail;
 
     @Column(length = 16, nullable = false)
     private String job;

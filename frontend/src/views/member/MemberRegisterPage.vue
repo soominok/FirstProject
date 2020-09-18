@@ -1,7 +1,6 @@
 <template>
   <v-main align="center">
-  <br>
-    <v-card width="700" class="px-auto mx-auto my-13" shaped>
+    <v-card width="700" class="px-auto mx-auto my-13" shaped outlined>
     <br>
       <h1>Member Register Page</h1>
       <member-register-form @submit="onSubmit"/>
@@ -21,11 +20,12 @@ export default {
   methods: {
     onSubmit (payload) {
       console.log('payload: ' + payload.userId +
+                  ', ' + payload.userPw +
                   ', ' + payload.userName +
-                  ', ' + payload.userPw)
-      const { userId, userPw, userName } = payload
+                  ', ' + payload.userEmail)
+      const { userId, userPw, userName, userEmail } = payload
       axios.post('http://localhost:5555/users/setup',
-        { userId, userPw, userName })
+        { userId, userPw, userName, userEmail })
         .then(res => {
           alert('Register Success')
           this.$router.push({

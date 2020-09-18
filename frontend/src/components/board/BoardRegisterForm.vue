@@ -1,8 +1,8 @@
 <template>
   <v-main align="center">
     <form @submit.prevent="onSubmit">
-      <br><br><br>
-      <v-card width="1200" height="550" class="mx-auto">
+      <br><br>
+      <v-card width="1300" height="600" class="mx-auto" outlined>
         <br>
         <h2>Board Register Form</h2><br>
         <v-simple-table justify="center" align="center">
@@ -17,7 +17,7 @@
             </tr>
             <tr class="text-center" id="tableBorder">
               <td width="300" height="150" class="blue-grey lighten-4">Content</td>
-              <td width="700" class="text-left"><textarea v-model="content" rows="5" style="width: 100%;"></textarea></td>
+              <td width="700" class="text-left"><textarea v-model="content" rows="5" style="width: 100%; height: 100%;"></textarea></td>
             </tr>
           </div>
         </v-simple-table>

@@ -1,7 +1,7 @@
 <template>
   <v-main align="center">
   <br><br>
-    <v-card width="600" class="px-auto mx-auto my-13">
+    <v-card width="700" class="px-auto mx-auto my-13" shaped outlined>
     <br>
       <h1>Login Page</h1>
       <v-row justify="center">

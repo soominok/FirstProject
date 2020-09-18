@@ -1,8 +1,8 @@
 <template>
   <v-main align="center">
   <br><br>
-    <v-card width="1200" height="600" class="mx-auto">
-    <br>
+    <v-card width="1300" height="600" class="mx-auto" outlined>
+    <br><br>
       <h2>Board Detailed View</h2><br>
       <v-simple-table class="px-15 mx-15" >
         <div class="mx-auto" style="border-collapse: collapse">
@@ -21,13 +21,13 @@
             <td class="text-left"><input type="text" v-model="board.writer" style="width: 100%;" readonly></td>
           </tr>
 
-          <tr class="text-center" id="tableBorder">
+          <!-- <tr class="text-center" id="tableBorder">
             <td width="300" height="35" class="blue-grey lighten-4">Registration Date</td>
             <td class="text-left"><input type="text" :value="board.regDate" style="width: 100%;" readonly></td>
-          </tr>
+          </tr> -->
 
           <tr class="text-center" id="tableBorder">
-            <td width="300" height="90" class="blue-grey lighten-4" align="center">Content</td>
+            <td width="300" height="120" class="blue-grey lighten-4" align="center">Content</td>
             <td class="text-left"><textarea v-model="board.content" rows="5" style="width: 100%;" readonly></textarea></td>
           </tr>
         </div>
@@ -94,8 +94,8 @@ export default {
 
 <style>
 #tableBorder {
-  //border-collapse: collapse;
-  border: 2px solid #777777;
+  border-collapse: collapse;
+  border: 1px solid #777777;
 }
   td {
     padding: 10px;
