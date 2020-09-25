@@ -34,11 +34,11 @@ public class Board {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @CreationTimestamp
+    @Column(columnDefinition = "datetime default now()")
     private Date regDate;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @UpdateTimestamp
-    @Column(columnDefinition = "datetime default now()")
     private Date upDate;
 
 }

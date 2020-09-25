@@ -1,13 +1,14 @@
 <template id="mainPage">
   <v-main>
-  <br><br>
-    <v-carousel hide-delimiters>
-      <v-carousel-item
-        v-for="(item,i) in items"
-        :key="i"
-        :src="item.src"
-      ></v-carousel-item>
-    </v-carousel>
+    <br><br>
+      <v-card width="1500" justify="center" class="px-3">
+        <v-img
+          src="https://investorplace.com/wp-content/uploads/2019/05/stock-picks-1024x683.jpg"
+          height="600"
+          class="grey darken-4"
+        ></v-img>
+        <!-- <v-card-title class="title">height</v-card-title> -->
+      </v-card>
   </v-main>
 </template>
 

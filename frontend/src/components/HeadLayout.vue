@@ -8,7 +8,7 @@
       shrink-on-scroll
     >
       <v-toolbar extended extension-height="30">
-        <v-toolbar-title class="text-h4 teal--text"><div @click="home">FirstProject</div></v-toolbar-title>
+        <v-toolbar-title class="text-h4 teal--text"><div @click="home">Stock Know</div></v-toolbar-title>
 
         <v-spacer></v-spacer>
 
