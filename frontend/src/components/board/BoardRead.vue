@@ -21,10 +21,10 @@
             <td class="text-left"><input type="text" v-model="board.writer" style="width: 100%;" readonly></td>
           </tr>
 
-          <!-- <tr class="text-center" id="tableBorder">
+          <tr class="text-center" id="tableBorder">
             <td width="300" height="35" class="blue-grey lighten-4">Registration Date</td>
             <td class="text-left"><input type="text" :value="board.regDate" style="width: 100%;" readonly></td>
-          </tr> -->
+          </tr>
 
           <tr class="text-center" id="tableBorder">
             <td width="300" height="120" class="blue-grey lighten-4" align="center">Content</td>
@@ -76,7 +76,7 @@ export default {
       axios.delete(`http://localhost:5555/boards/${boardNo}`)
         // 처리정보를 res로 받아오기
         .then(res => {
-          alert('Delete Success')
+          alert('게시물 삭제 성공~!!!')
           this.$router.push({ name: 'BoardListPage' })
         })
         // boardNo로 내용 가져오는데 문제 발생했을 경우

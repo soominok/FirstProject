@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -34,5 +35,10 @@ public class Board {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @CreationTimestamp
     private Date regDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @UpdateTimestamp
+    @Column(columnDefinition = "datetime default now()")
+    private Date upDate;
 
 }

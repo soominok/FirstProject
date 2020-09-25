@@ -1,7 +1,6 @@
 <template>
   <div align="center">
     <board-modify-form v-if="board" :board="board" @submit="onSubmit"/>
-    <!-- 만약에 board가 없다면 Loading...을 띄우기 -->
     <p v-else>Loading ...</p>
   </div>
 </template>

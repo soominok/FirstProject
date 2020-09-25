@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.Member;
 import com.example.demo.entity.MemberAuth;
 import com.example.demo.repository.MemberRepository;
+import com.example.demo.repository.findRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,10 @@ public class MemberServiceImpl implements MemberService {
     static final Logger log = LoggerFactory.getLogger(MemberServiceImpl.class);
 
     final MemberRepository repository;
-
     public MemberServiceImpl(MemberRepository repository) {
         this.repository = repository;
     }
+
 
     @Override
     public void register(Member member) throws Exception{
@@ -118,5 +119,10 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public long countAll() throws Exception {
         return repository.count();
+    }
+
+    @Override
+    public boolean idCheck(String userId) throws Exception {
+        return repository.findByUserId(userId).size() == 0;
     }
 }

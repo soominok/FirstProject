@@ -23,10 +23,10 @@
               <td class="text-left"><input type="text" v-model="board.writer" style="width: 100%;" disabled></td>
             </tr>
 
-            <!-- <tr class="text-center" id="tableBorder">
+            <tr class="text-center" id="tableBorder">
               <td width="300" height="35" class="blue-grey lighten-4">Registration Date</td>
               <td class="text-left"><input type="text" :value="board.regDate" style="width: 100%;" disabled></td>
-            </tr> -->
+            </tr>
 
             <tr class="text-center" id="tableBorder">
               <td width="300" height="120" class="blue-grey lighten-4" align="center">Content</td>

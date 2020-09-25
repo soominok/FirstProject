@@ -92,7 +92,8 @@ export default {
       headers: [
         { text: 'No.', align: 'center', value: 'boardNo', sortable: true },
         { text: '제목', align: 'center', value: 'title', sortable: true },
-        { text: '작성자', align: 'center', value: 'writer', sortable: false }
+        { text: '작성자', align: 'center', value: 'writer', sortable: false },
+        { text: '날짜', align: 'center', value: 'regDate', sortable: true }
       ],
       loading: false
     }

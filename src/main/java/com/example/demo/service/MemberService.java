@@ -15,4 +15,6 @@ public interface MemberService {
     public void remove(Long userNo) throws Exception;
     public long countAll() throws Exception;
 
+    public boolean idCheck(String userId) throws Exception;
+
 }

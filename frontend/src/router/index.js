@@ -15,6 +15,7 @@ import BoardReadPage from '../views/board/BoardReadPage.vue'
 import BoardModifyPage from '../views/board/BoardModifyPage.vue'
 
 import Keyword from '../views/stock/Keyword.vue'
+import NewsList from '../views/stock/NewsList.vue'
 
 Vue.use(VueRouter)
 
@@ -100,6 +101,16 @@ const routes = [
       default: BoardModifyPage
     },
     // boolean 모드 -> 이 옵션을 설정하면 route.params가 컴포넌트의 props에 자동 설정됨 (넘어갈 때 항상 참값이 자동으로 생성되는 것).
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/newsList',
+    name: 'NewsList',
+    components: {
+      default: NewsList
+    },
     props: {
       default: true
     }

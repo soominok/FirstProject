@@ -3,7 +3,6 @@
     <div align="center">
       <!-- mapping 해주기 -->
       <board-read v-if="board" :boardNo="boardNo" :board="board"/>
-      <!-- 내용을 가져오지 못했을 경우 표기해주기 -->
       <p v-else>Loading ...</p>
     </div>
   </v-main>
