@@ -17,7 +17,7 @@
             <div id="app">
               <v-row justify="end" text color="teal" style="padding: 5px; width: 500px;">
                 {{ myinfo.auth }}님, 접속을 환영합니다.
-                <v-menu open-on-hover bottom offset-y>
+                <v-menu bottom offset-y>
                   <template v-slot:activator="{ on, attrs }">
                     <v-btn text
                       class="px-8"

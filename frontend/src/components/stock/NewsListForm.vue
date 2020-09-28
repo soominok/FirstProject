@@ -33,7 +33,6 @@
                 no-title
                 scrollable
                 min="2019-01-01"
-                max-date="date"
                 color="orange"
                 @change="checkDates"
               >
